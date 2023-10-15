@@ -16,12 +16,18 @@
     "mac": {
       "category": "public.app-category.developer-tools",
       "publish": [
-        "github"
+        {
+          "provider": "github",
+          "releaseType": "release"
+        }
       ]
     },
     "win": {
       "publish": [
-        "github"
+        {
+          "provider": "github",
+          "releaseType": "release"
+        }
       ]
     }
   },
