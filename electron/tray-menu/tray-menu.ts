@@ -1,8 +1,4 @@
-import {
-  BrowserWindow,
-  Tray,
-  nativeImage,
-} from "electron";
+import { BrowserWindow, Tray, nativeImage, shell, app } from "electron";
 import AppIcon from "../../public/icons/app-icon.png";
 import path from "node:path";
 
@@ -39,7 +35,7 @@ export default {
         preload: path.join(__dirname, "preload.js"),
       },
       width: 250,
-      height: 220,
+      height: 228,
       resizable: false,
       modal: true,
       hiddenInMissionControl: true,
@@ -49,6 +45,20 @@ export default {
       backgroundColor: "#242424",
       x: this.trayInstance.getBounds().x - 10,
       y: this.trayInstance.getBounds().y,
+    });
+
+    this.trayWindow.webContents.setWindowOpenHandler(({ url }) => {
+      shell.openExternal(url);
+
+      return { action: "deny" };
+    });
+
+    this.trayWindow.webContents.ipc.on("trigger-action", (_, action) => {
+      action === "quit-app" && app.quit();
+    });
+
+    this.trayWindow.webContents.ipc.on("set-tray-title", (_, title) => {
+      this.trayInstance?.setTitle(title);
     });
 
     this.trayWindow.addListener("blur", () => {
@@ -68,44 +78,4 @@ export default {
     this.trayWindow.close();
     this.trayWindow = null;
   },
-
-  updateTitle(title: string) {
-    this.trayInstance?.setTitle(title);
-  },
-
-  // items(trayInstance: Tray) {
-  //   return [
-  //     {
-  //       label: "🎨 Color picker",
-  //       click: () => PickColorAction(trayInstance),
-  //     },
-  //     { type: "separator" },
-  //     { label: "🔑 Password generator" },
-  //     { label: "🧮 Hash calculator" },
-  //     { label: "⛄ JWT Parser" },
-  //     { label: "🔏 Base64 encoder/decoder" },
-  //     { type: "separator" },
-  //     {
-  //       label: "JSON",
-  //       submenu: [
-  //         { label: "💅 Beautify" },
-  //         { label: "📦 Minify" },
-  //         { label: "🔀 Convert to YAML" },
-  //       ],
-  //     },
-  //     {
-  //       label: "YAML",
-  //       submenu: [
-  //         { label: "💅 Beautify" },
-  //         { label: "📦 Minify" },
-  //         { label: "🔀 Convert to JSON" },
-  //       ],
-  //     },
-  //     { type: "separator" },
-  //     { label: "Version 1.0.0", enabled: false },
-  //     { label: "❗ Report an issue" },
-  //     { type: "separator" },
-  //     { label: "Quit", click: QuitApplicationAction },
-  //   ] as MenuItemConstructorOptions[];
-  // },
 };

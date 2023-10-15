@@ -36,10 +36,10 @@ export default {
 
 <template>
   <button @click="generatePassword()">
-    <i-solar-key-minimalistic-square-bold /> Password generator
+    <i-ri-key-fill /> {{ $t("password_generator_component.password_generator") }}
 
     <div class="flex button-right-aligned-content gap-2 items-center">
-      <span v-if="clipboardSuccessState" class="success-text">Copied</span>
+      <span v-if="clipboardSuccessState" class="success-text">{{ $t('shared.feedback.copied') }}</span>
     </div>
   </button>
 </template>

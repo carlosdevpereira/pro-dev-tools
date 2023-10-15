@@ -21,6 +21,16 @@ body, #app {
   height: 100%;
 }
 
+label {
+  display: block;
+  padding: 14px 15px;
+  font-size: 12.5px;
+  text-align: left;
+  color: #909090;
+  font-weight: 600;
+  line-height: 16px;
+  margin-bottom: -6px;
+}
 
 button {
   position: relative;
@@ -33,15 +43,21 @@ button {
   border: none;
   cursor: pointer;
   text-align: left;
-  padding: 12px 15px;
+  padding: 10px 15px;
   font-size: 12.5px;
 }
 
 button:hover {
-  background:rgba(255, 255, 255, 0.05);
+  background:rgb(60, 60, 60);
 }
 
 hr {
   margin: 0 12px;
-  border-color: rgba(255, 255, 255, 0.2);
+  border: 0.5px solid rgb(60, 60, 60);
 }
+
+hr.w-full {
+  margin: 8px 0 -4px;
+  border-color: rgb(56, 56, 56);
+}
+

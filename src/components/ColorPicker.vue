@@ -56,10 +56,10 @@ export default {
 
 <template>
   <button @click="openEyeDropper()">
-    <i-pepicons-pop-color-picker-circle-filled /> Color picker
+    <i-ri-palette-fill /> {{ $t("color_picker_component.color_picker") }}
 
-    <div class="flex button-right-aligned-content gap-2 items-center">
-      <span v-if="clipboardSuccessState" class="success-text">Copied</span>
+    <div v-if="hexColor" class="flex button-right-aligned-content gap-2 items-center">
+      <span v-if="clipboardSuccessState" class="success-text">{{ $t('shared.feedback.copied') }}</span>
 
       <span class="picked-color" :style="`background-color: ${hexColor}; color: ${foregroundColor};`">
         {{ hexColor }}

@@ -1,0 +1,20 @@
+{
+  "color_picker_component": {
+    "color_picker": "Color picker"
+  },
+  "password_generator_component": {
+    "password_generator": "Password generator"
+  },
+  "report_issue_component": {
+    "report_an_issue": "Report an issue"
+  },
+  "quit_app_component": {
+    "quit": "Quit"
+  },
+  "shared": {
+    "app_version": "Version {version}",
+    "feedback": {
+      "copied": "Copied"
+    }
+  }
+}

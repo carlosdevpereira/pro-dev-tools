@@ -30,6 +30,7 @@ export default defineConfig({
       resolvers: [
         IconsResolver(),
       ],
+      dts: false,
     }),
     Icons({
       autoInstall: true
