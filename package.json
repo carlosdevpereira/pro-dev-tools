@@ -3,23 +3,35 @@
   "private": true,
   "version": "0.1.1",
   "description": "A 'swiss-knife' for the modern developer needs.",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "release": "electron-builder -p always",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.carlosdevpereira.prodevtools",
+    "productName": "Pro.Dev.Tools",
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "publish": [
+        "github"
+      ]
+    },
+    "win": {
+      "publish": [
+        "github"
+      ]
+    }
+  },
   "author": {
     "name": "Carlos Pereira",
     "email": "prodevtools@carlosdevpereira.com",
     "url": "https://github.com/carlosdevpereira"
   },
-  "main": "dist-electron/main.js",
-  "build": {
-    "appId": "com.carlosdevpereira.prodevtools",
-    "productName": "Pro.Dev.Tools",
-    "mac": {
-      "category": "public.app-category.developer-tools"
-    }
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build && electron-builder",
-    "preview": "vite preview"
+  "repository": {
+    "url": "https://github.com/carlosdevpereira/pro-dev-tools"
   },
   "dependencies": {
     "vue": "^3.3.4"
