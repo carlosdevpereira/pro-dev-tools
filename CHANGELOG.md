@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/carlosdevpereira/pro-dev-tools/compare/v0.1.0...v0.1.1) (2023-10-15)
+
+
+### Bug Fixes
+
+* **ci:** add action checkout and authentication before tagging ([dd546cd](https://github.com/carlosdevpereira/pro-dev-tools/commit/dd546cde3b6b907cc6d62858e1b5be73294774cc))
+
 ## 0.1.0 (2023-10-15)
 
 
