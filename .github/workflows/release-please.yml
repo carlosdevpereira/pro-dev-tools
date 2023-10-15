@@ -18,6 +18,11 @@ jobs:
         with:
           release-type: node
           package-name: Pro.Dev.Tools
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: refs/heads/main
+          fetch-depth: 0
       - name: tag major and minor versions
         if: ${{ steps.release.outputs.release_created }}
         run: |
