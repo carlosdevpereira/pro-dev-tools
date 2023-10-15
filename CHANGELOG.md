@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/carlosdevpereira/pro-dev-tools/compare/v0.1.1...v0.1.2) (2023-10-15)
+
+
+### Bug Fixes
+
+* **ci:** add release type to github provider ([ca9147e](https://github.com/carlosdevpereira/pro-dev-tools/commit/ca9147ee4fa7c1640d4403071df6d8b5ed6963ae))
+
 ## [0.1.1](https://github.com/carlosdevpereira/pro-dev-tools/compare/v0.1.0...v0.1.1) (2023-10-15)
 
 
