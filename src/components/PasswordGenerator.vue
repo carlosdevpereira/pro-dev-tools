@@ -1,29 +1,36 @@
-<script lang="ts" setup>
-import { ref } from 'vue';
+<script lang="ts">
+// Allowed characters to be used in the generated strings
+const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*().";
 
-let password = ref('')
+export default {
+  data() {
+    return {
+      password: '',
+      clipboardSuccessState: false
+    }
+  },
 
-function generatePassword() {
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*().";
-  let randomString = "";
+  methods: {
+    generatePassword() {
+      let randomString = "";
 
-  for (let i = 0; i < 16; i++) {
-    randomString += characters[Math.floor(Math.random() * characters.length)];
+      for (let i = 0; i < 16; i++) {
+        randomString += characters[Math.floor(Math.random() * characters.length)];
+      }
+
+      this.password = randomString;
+      this.copyToClipboard()
+    },
+
+    copyToClipboard() {
+      navigator.clipboard.writeText(this.password)
+      this.clipboardSuccessState = true
+
+      setTimeout(() => {
+        this.clipboardSuccessState = false
+      }, 2000)
+    }
   }
-
-  password.value = randomString;
-
-  copyToClipboard()
-}
-
-let clipboardSuccessState = ref(false)
-function copyToClipboard() {
-  navigator.clipboard.writeText(password.value)
-  clipboardSuccessState.value = true
-
-  setTimeout(() => {
-    clipboardSuccessState.value = false
-  }, 2000)
 }
 </script>
 

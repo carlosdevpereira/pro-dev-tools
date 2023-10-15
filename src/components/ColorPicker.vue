@@ -1,62 +1,68 @@
-<script lang="ts" setup>
+<script lang="ts">
 import { useEyeDropper } from '@vueuse/core'
-import { onMounted, ref, watch } from 'vue'
+import { ref } from 'vue'
 
-const { open, sRGBHex } = useEyeDropper()
-let sRGBHexForeground = ref('#FFF')
+export default {
+  setup() {
+    const { open, sRGBHex } = useEyeDropper()
+    const clipboardSuccessState = ref(false)
 
-onMounted(() => {
-  const eyeDropperTrigger = document.getElementById('eyeDropperTrigger')
-  console.log('trigger: ', eyeDropperTrigger)
+    return {
+      hexColor: sRGBHex,
+      openEyeDropper: open,
+      clipboardSuccessState,
+    }
+  },
 
-  eyeDropperTrigger?.click()
-})
+  computed: {
+    foregroundColor() {
+      let hex = this.hexColor
 
-watch(() => sRGBHex.value, () => {
-  copyToClipboard()
+      if (hex.indexOf('#') === 0) hex = hex.slice(1);
+      if (hex.length === 3) {
+        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+      }
 
-  // Calculate inverse foreground color
-  let hex = sRGBHex.value
+      const r = parseInt(hex.slice(0, 2), 16),
+        g = parseInt(hex.slice(2, 4), 16),
+        b = parseInt(hex.slice(4, 6), 16);
 
-  if (hex.indexOf('#') === 0) {
-    hex = hex.slice(1);
+      if ((r * 0.299 + g * 0.587 + b * 0.114) > 186) {
+        return '#000000';
+      }
+
+      return '#FFFFFF';
+    }
+  },
+
+  methods: {
+    copyToClipboard() {
+      navigator.clipboard.writeText(`${this.hexColor}`)
+      this.clipboardSuccessState = true
+
+      setTimeout(() => {
+        this.clipboardSuccessState = false
+      }, 2000)
+    }
+  },
+
+  watch: {
+    hexColor() {
+      this.copyToClipboard()
+    }
   }
-
-  if (hex.length === 3) {
-    hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-  }
-
-  const r = parseInt(hex.slice(0, 2), 16),
-    g = parseInt(hex.slice(2, 4), 16),
-    b = parseInt(hex.slice(4, 6), 16);
-
-  if ((r * 0.299 + g * 0.587 + b * 0.114) > 186) {
-    sRGBHexForeground.value = '#000000';
-  } else {
-    sRGBHexForeground.value = '#FFFFFF';
-  }
-})
-
-let clipboardSuccessState = ref(false)
-function copyToClipboard() {
-  navigator.clipboard.writeText(`${sRGBHex.value}`)
-  clipboardSuccessState.value = true
-
-  setTimeout(() => {
-    clipboardSuccessState.value = false
-  }, 2000)
 }
 </script>
 
 <template>
-  <button @click="open()">
+  <button @click="openEyeDropper()">
     <i-pepicons-pop-color-picker-circle-filled /> Color picker
 
     <div class="flex button-right-aligned-content gap-2 items-center">
       <span v-if="clipboardSuccessState" class="success-text">Copied</span>
 
-      <span class="picked-color" :style="`background-color: ${sRGBHex}; color: ${sRGBHexForeground};`">
-        {{ sRGBHex }}
+      <span class="picked-color" :style="`background-color: ${hexColor}; color: ${foregroundColor};`">
+        {{ hexColor }}
       </span>
     </div>
   </button>

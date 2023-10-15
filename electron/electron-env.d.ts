@@ -11,5 +11,3 @@ declare namespace NodeJS {
 interface Window {
   ipcRenderer: import('electron').IpcRenderer
 }
-
-declare module "osx-mouse"

@@ -38,7 +38,7 @@ export default {
       webPreferences: {
         preload: path.join(__dirname, "preload.js"),
       },
-      width: 300,
+      width: 250,
       height: 220,
       resizable: false,
       modal: true,
@@ -47,7 +47,7 @@ export default {
       center: false,
       frame: false,
       backgroundColor: "#242424",
-      x: this.trayInstance.getBounds().x - 20,
+      x: this.trayInstance.getBounds().x - 10,
       y: this.trayInstance.getBounds().y,
     });
 
