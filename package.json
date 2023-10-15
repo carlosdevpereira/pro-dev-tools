@@ -1,7 +1,7 @@
 {
   "name": "pro-dev-tools",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "A 'swiss-knife' for the modern developer needs.",
   "author": {
     "name": "Carlos Pereira",
@@ -9,6 +9,13 @@
     "url": "https://github.com/carlosdevpereira"
   },
   "main": "dist-electron/main.js",
+  "build": {
+    "appId": "com.carlosdevpereira.prodevtools",
+    "productName": "Pro.Dev.Tools",
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build && electron-builder",
