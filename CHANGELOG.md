@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/carlosdevpereira/pro-dev-tools/compare/v0.1.2...v0.1.3) (2023-10-18)
+
+
+### Bug Fixes
+
+* missing files after build preventing app from working ([e6e423c](https://github.com/carlosdevpereira/pro-dev-tools/commit/e6e423c3184e538a4245b65e1bba0cbf898babd4))
+
 ## [0.1.2](https://github.com/carlosdevpereira/pro-dev-tools/compare/v0.1.1...v0.1.2) (2023-10-15)
 
 
