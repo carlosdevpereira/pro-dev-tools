@@ -6,13 +6,23 @@
   "main": "dist-electron/main.js",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "release": "electron-builder -p always",
+    "build": "vue-tsc && vite build && electron-builder",
+    "release:publish": "electron-builder -p always",
     "preview": "vite preview"
   },
   "build": {
     "appId": "com.carlosdevpereira.prodevtools",
     "productName": "Pro.Dev.Tools",
+    "files": [
+      "build",
+      "dist/assets",
+      "dist/icons",
+      "dist/index.html",
+      "*.js",
+      "node_modules",
+      "dist-electron",
+      "public"
+    ],
     "mac": {
       "category": "public.app-category.developer-tools",
       "publish": [

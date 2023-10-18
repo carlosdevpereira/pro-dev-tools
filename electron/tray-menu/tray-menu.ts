@@ -3,6 +3,7 @@ import AppIcon from "../../public/icons/app-icon.png";
 import path from "node:path";
 
 const VITE_DEV_SERVER_URL = process.env["VITE_DEV_SERVER_URL"];
+const buildIndexFile = path.join(__dirname, "../dist/index.html")
 
 export default {
   trayInstance: null as Tray | null,
@@ -47,6 +48,12 @@ export default {
       y: this.trayInstance.getBounds().y,
     });
 
+    if (VITE_DEV_SERVER_URL) {
+      this.trayWindow.loadURL(VITE_DEV_SERVER_URL);
+    } else {
+      this.trayWindow.loadFile(buildIndexFile);
+    }
+
     this.trayWindow.webContents.setWindowOpenHandler(({ url }) => {
       shell.openExternal(url);
 
@@ -64,12 +71,6 @@ export default {
     this.trayWindow.addListener("blur", () => {
       this.killTrayWindow();
     });
-
-    if (VITE_DEV_SERVER_URL) {
-      this.trayWindow.loadURL(VITE_DEV_SERVER_URL);
-    } else {
-      this.trayWindow.loadFile(path.join(process.env.DIST, "index.html"));
-    }
   },
 
   killTrayWindow() {

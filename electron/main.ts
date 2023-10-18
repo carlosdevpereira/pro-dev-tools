@@ -5,9 +5,14 @@
  * Creates a system tray menu with a set of useful tools for usual developer hassels.
  */
 
-import './env'
+import path from "node:path";
 import { app } from "electron";
 import Tray from "./tray-menu";
+
+process.env.DIST = path.join(__dirname, "../dist");
+process.env.VITE_PUBLIC = app.isPackaged
+  ? process.env.DIST
+  : path.join(process.env.DIST, "../public");
 
 // Bootstrap app when ready
 // (after electron is initialized)

@@ -1,6 +1,6 @@
 <div align="center">
 
-![Pro.Dev.Tools Icon](/public/icons/app-icon@128.png)
+![Pro.Dev.Tools Icon](/public/icons/app-icon@128.webp)
 
 # Pro.Dev.Tools
 
@@ -77,10 +77,6 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 
 <div align="center" style="margin-top: 3rem;">
 
-  <a href="https://www.flaticon.com/free-icons/hard-hat" title="hard hat icons by Smashicons - Flaticon">
-
-  ![Pro.Dev.Tools Icon](./public/icons/app-icon@64.png)
-
-  </a>
+  ![Pro.Dev.Tools Icon](./public/icons/app-icon@64.webp)
 
 </div>
