@@ -1,4 +1,4 @@
-name: Build release artifacts 📦
+name: Build 📦
 
 on:
   workflow_dispatch:
