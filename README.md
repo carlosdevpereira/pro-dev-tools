@@ -6,9 +6,10 @@
 
 A 'swiss-knife' for the modern developer needs. This app provides a useful set of features for the everyday life of an engineer.
 
-![Github License](https://img.shields.io/badge/License-MIT-blue)
-![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/carlosdevpereira/pro-dev-tools/main?label=Version&color=green)
+[![Build 📦](https://github.com/carlosdevpereira/pro-dev-tools/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/carlosdevpereira/pro-dev-tools/actions/workflows/build.yml)
+![GitHub package.json version (main)](https://img.shields.io/github/package-json/v/carlosdevpereira/pro-dev-tools/main?label=Version&color=green)
 ![Development Status](https://img.shields.io/badge/Status-WIP-orange)
+![Github License](https://img.shields.io/badge/License-MIT-blue)
 
 </div>
 
