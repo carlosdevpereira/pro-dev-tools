@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/carlosdevpereira/pro-dev-tools/compare/v0.1.3...v0.2.0) (2023-10-26)
+
+
+### Features
+
+* add chatgpt link & add proper routing ([6196d10](https://github.com/carlosdevpereira/pro-dev-tools/commit/6196d10ee919198e38eff3687af15e75ff347c57))
+* add CODEOWNERS github config file ([5590298](https://github.com/carlosdevpereira/pro-dev-tools/commit/5590298b3bc5b1ce9e84707aaf384827fb64ddf5))
+
 ## [0.1.3](https://github.com/carlosdevpereira/pro-dev-tools/compare/v0.1.2...v0.1.3) (2023-10-18)
 
 
