@@ -11,6 +11,10 @@
   "quit_app_component": {
     "quit": "Quit"
   },
+  "chat_gpt_component": {
+    "chat_gpt": "ChatGPT",
+    "send_message_to_chat_gpt": "Send a message to ChatGPT"
+  },
   "shared": {
     "app_version": "Version {version}",
     "feedback": {

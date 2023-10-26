@@ -1,9 +1,10 @@
 import { BrowserWindow, Tray, nativeImage, shell, app } from "electron";
 import AppIcon from "../../public/icons/app-icon.png";
 import path from "node:path";
+import windowConfig from "../config/window";
 
 const VITE_DEV_SERVER_URL = process.env["VITE_DEV_SERVER_URL"];
-const buildIndexFile = path.join(__dirname, "../dist/index.html")
+const buildIndexFile = path.join(__dirname, "../dist/index.html");
 
 export default {
   trayInstance: null as Tray | null,
@@ -27,16 +28,17 @@ export default {
     return this.trayInstance;
   },
 
+  // @TODO: Move window creation to its own file
   setupTrayWindow() {
     if (!this.trayInstance) return;
 
     this.trayWindow = new BrowserWindow({
-      alwaysOnTop: true,
+      alwaysOnTop: windowConfig.alwaysOnTop,
       webPreferences: {
         preload: path.join(__dirname, "preload.js"),
       },
-      width: 250,
-      height: 228,
+      width: windowConfig.size.width,
+      height: windowConfig.size.height,
       resizable: false,
       modal: true,
       hiddenInMissionControl: true,
@@ -68,9 +70,15 @@ export default {
       this.trayInstance?.setTitle(title);
     });
 
-    this.trayWindow.addListener("blur", () => {
-      this.killTrayWindow();
+    this.trayWindow.webContents.ipc.on("set-window-config", (_, { size }) => {
+      if (size) this.trayWindow?.setSize(size.width, size.height);
     });
+
+    if (windowConfig.closeOnBlur) {
+      this.trayWindow.addListener("blur", () => {
+        this.killTrayWindow();
+      });
+    }
   },
 
   killTrayWindow() {

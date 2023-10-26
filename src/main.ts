@@ -1,18 +1,17 @@
 import { createApp } from "vue";
+import { useElectronBridge } from "./composables/useElectronBridge";
 import App from "./App.vue";
 import I18nPlugin from "./i18n";
+import RouterPlugin from "./router";
 import "virtual:uno.css";
 import "./style.css";
 
+const electronBridge = useElectronBridge();
+
 createApp(App)
   .use(I18nPlugin)
+  .use(RouterPlugin)
   .mount("#app")
   .$nextTick(() => {
-    // Remove Preload scripts loading
-    postMessage({ payload: "removeLoading" }, "*");
-
-    // Use contextBridge
-    window.ipcRenderer.on("main-process-message", (_event, message) => {
-      console.log(message);
-    });
+    electronBridge.sendMessage("remove-loading");
   });

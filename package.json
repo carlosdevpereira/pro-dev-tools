@@ -50,7 +50,9 @@
     "url": "https://github.com/carlosdevpereira/pro-dev-tools"
   },
   "dependencies": {
-    "vue": "^3.3.4"
+    "openai": "^4.14.0",
+    "vue": "^3.3.6",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@iconify-json/ri": "^1.1.12",

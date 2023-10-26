@@ -113,7 +113,7 @@ const { appendLoading, removeLoading } = useLoading();
 domReady().then(appendLoading);
 
 window.onmessage = (ev) => {
-  ev.data.payload === "removeLoading" && removeLoading();
+  ev.data.event === "remove-loading" && removeLoading();
 };
 
 setTimeout(removeLoading, 4999);

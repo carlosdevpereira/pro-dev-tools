@@ -1,22 +1,6 @@
-<script setup lang="ts">
-import ColorPicker from './components/ColorPicker.vue'
-import CurrentVersion from './components/CurrentVersion.vue';
-import PasswordGenerator from './components/PasswordGenerator.vue'
-import ReportIssue from './components/ReportIssue.vue';
-import QuitApp from './components/QuitApp.vue';
-</script>
-
 <template>
-  <div class="w-full">
-    <label>Pro.Dev.Tools</label>
-    <ColorPicker />
-    <hr />
-    <PasswordGenerator />
-    <hr class="w-full" />
-    <CurrentVersion />
-    <ReportIssue />
-    <hr />
-    <QuitApp />
+  <div class="w-full overflow-x-hidden">
+    <router-view></router-view>
   </div>
 </template>
 
